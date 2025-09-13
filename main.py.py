@@ -48,4 +48,7 @@ agent_executor = AgentExecutor(
 )   
 
 raw_response = agent_executor.invoke({"query": "Write a brief research paper on intrinsic and extrinsic bugs."})
-print(raw_response)
+
+structured_response = parser.parse(raw_response.get("output")[0]["text"])
+
+print(structured_response.topic)
